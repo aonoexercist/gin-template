@@ -15,14 +15,17 @@ test:
 lint:
 	golangci-lint run
 
+format:
+	golangci-lint run --fix
+
 tidy:
 	go mod tidy
 
 up:
-	docker compose -f deployments/docker-compose.yml up --build
+	podman compose -f deployments/docker-compose.yml up --build
 
 down:
-	docker compose -f deployments/docker-compose.yml down -v
+	podman compose -f deployments/docker-compose.yml down -v
 
 migrate-up:
 	migrate -path migrations -database "$(DB_URL)" up
