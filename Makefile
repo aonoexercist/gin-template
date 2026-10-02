@@ -22,10 +22,10 @@ tidy:
 	go mod tidy
 
 up:
-	podman compose -f deployments/docker-compose.yml up --build
+	podman-compose -f deployments/docker-compose.yml up --build
 
 down:
-	podman compose -f deployments/docker-compose.yml down -v
+	podman-compose -f deployments/docker-compose.yml down -v
 
 migrate-up:
 	migrate -path migrations -database "$(DB_URL)" up
