@@ -49,7 +49,7 @@ A production-ready Go backend template built with [Gin](https://github.com/gin-g
 
 | Tool | Needed for | Install |
 |---|---|---|
-| Go 1.22+ | Building and running | https://go.dev/dl |
+| Go 1.25+ | Building and running | https://go.dev/dl |
 | Docker | Local Postgres, `make up` | https://docs.docker.com/get-docker |
 | make | Running the Makefile | Preinstalled on macOS/Linux; Windows: WSL or `choco install make` |
 | golang-migrate | `make migrate-up/down` | `brew install golang-migrate` or `go install -tags 'postgres' github.com/golang-migrate/migrate/v4/cmd/migrate@latest` |
