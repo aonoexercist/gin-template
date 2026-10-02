@@ -34,7 +34,7 @@ func (f *fakeRepo) GetByID(_ context.Context, id uint) (*User, error) {
 	return nil, ErrNotFound
 }
 func (f *fakeRepo) List(context.Context, int, int) ([]User, int64, error) { return nil, 0, nil }
-func (f *fakeRepo) Update(context.Context, *User) error                    { return nil }
+func (f *fakeRepo) Update(context.Context, *User) error                   { return nil }
 func (f *fakeRepo) Delete(_ context.Context, id uint) error {
 	if _, ok := f.users[id]; !ok {
 		return ErrNotFound
