@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:16-alpine
+    image: docker.io/library/postgres:16-alpine
     environment:
       POSTGRES_USER: app
       POSTGRES_PASSWORD: app
@@ -13,10 +13,10 @@ services:
       retries: 10
 
   migrate:
-    image: migrate/migrate
+    image: docker.io/migrate/migrate
     depends_on:
       db: { condition: service_healthy }
-    volumes: ["../migrations:/migrations"]
+    volumes: ["../migrations:/migrations:Z"]
     command: ["-path=/migrations", "-database=postgres://app:app@db:5432/app?sslmode=disable", "up"]
 
   api:
