@@ -1,13 +1,13 @@
+version: "2"
 run:
   timeout: 3m
 linters:
+  default: standard   # errcheck, govet, staticcheck, unused, ...
   enable:
-    - errcheck
-    - govet
-    - staticcheck
-    - unused
-    - gofmt
-    - goimports
+    - errorlint
     - misspell
     - bodyclose
-    - errorlint
+formatters:
+  enable:
+    - gofmt
+    - goimports
