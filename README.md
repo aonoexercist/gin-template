@@ -40,7 +40,6 @@ A production-ready Go backend template built with [Gin](https://github.com/gin-g
 ├── migrations/               # SQL migrations (up/down)
 ├── api/openapi.yaml          # OpenAPI spec
 ├── deployments/              # Dockerfile, docker-compose.yml
-├── .github/workflows/ci.yml  # CI pipeline
 ├── Makefile
 ├── .env.example
 └── .golangci.yml
