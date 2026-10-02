@@ -41,7 +41,11 @@ func run() error {
 	if err != nil {
 		return err
 	}
-	defer sqlDB.Close()
+	defer func() {
+		if err := sqlDB.Close(); err != nil {
+			log.Error("close database", "error", err)
+		}
+	}()
 
 	// --- Features (add new ones here) ---
 	userHandler := user.NewHandler(user.NewService(user.NewRepository(db)))
