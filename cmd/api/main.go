@@ -8,12 +8,11 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/yourname/gin-template/internal/health"
+	"github.com/yourname/gin-template/internal/app"
 	"github.com/yourname/gin-template/internal/platform/config"
 	"github.com/yourname/gin-template/internal/platform/database"
 	"github.com/yourname/gin-template/internal/platform/logger"
 	"github.com/yourname/gin-template/internal/platform/server"
-	"github.com/yourname/gin-template/internal/user"
 )
 
 func main() {
@@ -47,11 +46,7 @@ func run() error {
 		}
 	}()
 
-	// --- Features (add new ones here) ---
-	userHandler := user.NewHandler(user.NewService(user.NewRepository(db)))
-	healthHandler := health.NewHandler(sqlDB)
-
-	router := server.NewRouter(cfg, log, healthHandler, userHandler)
+	router := app.NewRouter(cfg, log, db, sqlDB)
 	srv := server.New(cfg, log, router)
 
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
